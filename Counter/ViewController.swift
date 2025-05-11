@@ -1,10 +1,3 @@
-//
-//  ViewController.swift
-//  counter-app
-//
-//  Created by Mikhail Pavlov on 08.05.2025.
-//
-
 import UIKit
 
 class ViewController: UIViewController {
@@ -13,22 +6,21 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         counterView.text = "\(counter)"
         logTextView.text = logArray[0]
-        // Do any additional setup after loading the view.
     }
     
-    func updateCounter() {
+    private func updateCounter() {
         counterView.text = "\(counter)"
     }
     
-    func extendNumber() {
+    private func extendNumber() {
         counter += 1
         updateCounter()
     }
     
-    @IBOutlet weak var counterView: UILabel!
-    var counter = 0
+    @IBOutlet weak private var counterView: UILabel!
+    private var counter = 0
     
-    @IBAction func resetButtonDidTap(_ sender: Any) {
+    @IBAction private func resetButtonDidTap(_ sender: Any) {
         if counter > 0 {
             counter = 0
             updateCounter()
@@ -36,15 +28,15 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func counterButtonDidTap(_ sender: UIButton) {
+    @IBAction private func counterButtonDidTap(_ sender: UIButton) {
         extendNumber()
         makeALog(outputMessage: ": значение изменено на +1")
     }
-    @IBAction func plusButtonDidTap(_ sender: Any) {
+    @IBAction private func plusButtonDidTap(_ sender: Any) {
         extendNumber()
         makeALog(outputMessage: ": значение изменено на +1")
     }
-    @IBAction func minusButtonDidTap(_ sender: Any) {
+    @IBAction private func minusButtonDidTap(_ sender: Any) {
         if counter >= 1 {
             counter -= 1
             updateCounter()
@@ -55,11 +47,11 @@ class ViewController: UIViewController {
         }
     }
 
-    @IBOutlet weak var logTextView: UITextView!
+    @IBOutlet weak private var logTextView: UITextView!
         
-    var logArray: [String] = ["История изменений:"]
+    private var logArray: [String] = ["История изменений:"]
     
-    func makeALog(outputMessage: String) {
+    private func makeALog(outputMessage: String) {
         let today = Date.now
         let formatter = DateFormatter()
         formatter.dateFormat = "d MMM yyyy HH:mm:ss"
